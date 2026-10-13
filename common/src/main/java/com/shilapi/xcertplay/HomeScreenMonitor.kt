@@ -1,5 +1,6 @@
 package com.shilapi.xcertplay
 
+import android.app.AppOpsManager
 import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.Context
@@ -7,12 +8,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
+import android.os.Process
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
 /**
- * Whether a home screen is in front (BYD's normal home, map home or MyCar, or whichever
+ * Whether a home screen is in front (the car's normal home, map home or MyCar, or whichever
  * launcher is the default home, such as a third-party car launcher), from the newest resumed
  * activity in the owner's Usage Access events or Accessibility events.
  * Overlays and panels are not activities, so they leave the answer as it is.
@@ -42,8 +44,8 @@ internal class HomeScreenMonitor(context: Context, private val onChange: (Boolea
         // Register for external foreground updates (e.g. from AccessibilityService)
         foregroundListener = listener
 
-        // UsageStatsManager poller fallback
-        if (DiLink51ClusterMonitor.hasAccess(context)) {
+        // UsageStatsManager poller fallback (requires Usage Access permission)
+        if (hasAccess(context)) {
             since = System.currentTimeMillis() - FIRST_LOOK_BACK_MILLIS
             newestTime = 0L
             newestPackage = null
@@ -107,8 +109,8 @@ internal class HomeScreenMonitor(context: Context, private val onChange: (Boolea
             foregroundListener?.invoke(pkg)
         }
 
-        // BYD's home list (Launcher3 HomeHelper): MyCar, the normal home, and the map home.
-        val HOME_PACKAGES = setOf("com.android.launcher3", "com.byd.launchermap", "com.byd.naviauto", "com.byd.mycar")
+        // carlito | BYD home packages removed.
+        val HOME_PACKAGES = setOf("com.android.launcher3")
 
         // Known third-party car launchers
         val KNOWN_CAR_LAUNCHERS = setOf(
@@ -117,7 +119,6 @@ internal class HomeScreenMonitor(context: Context, private val onChange: (Boolea
             "com.dy.launcher",            // 迪友桌面 (部分渠道)
             "com.king.dyzm",              // 迪友桌面
             "com.king.diyou",
-            "com.byd.diyou",
             "com.dudu.android.launcher",  // 嘟嘟桌面
             "com.dudu.android.launcher.mini",
             "com.tencent.autolauncher",   // 腾讯车联
@@ -125,7 +126,16 @@ internal class HomeScreenMonitor(context: Context, private val onChange: (Boolea
         )
 
         // Accessibility alone is not a foreground source: this PR has no service dispatching events.
-        fun hasAccess(context: Context): Boolean = DiLink51ClusterMonitor.hasAccess(context)
+        // carlito | Generic Usage Access check via AppOps — replaces BYD-specific DiLink51ClusterMonitor probe.
+        fun hasAccess(context: Context): Boolean {
+            val appOps = context.getSystemService(AppOpsManager::class.java) ?: return false
+            val mode = appOps.unsafeCheckOpNoThrow(
+                AppOpsManager.OPSTR_GET_USAGE_STATS,
+                Process.myUid(),
+                context.packageName,
+            )
+            return mode == AppOpsManager.MODE_ALLOWED
+        }
 
         /** Query all launcher packages declared on the system. */
         fun queryHomePackages(context: Context): Set<String> {

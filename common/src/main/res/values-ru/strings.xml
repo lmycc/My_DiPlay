@@ -126,7 +126,6 @@
     <string name="back_to_diplay">Вернуться в DiPlay</string>
     <string name="band">Диапазон</string>
     <string name="bluetooth_settings">Настройки Bluetooth</string>
-    <string name="byd_navigation">Навигация BYD</string>
     <string name="cancel">Отмена</string>
     <string name="car_home">Главная в автомобиле</string>
     <string name="car_hotspot_details">Данные точки доступа автомобиля</string>
@@ -350,7 +349,6 @@
     <string name="share">Поделиться</string>
     <string name="show_on_screen_debug_logs">Показывать отладочные журналы на экране</string>
     <string name="show_password">Показать пароль</string>
-    <string name="show_phone_navigation_arrows_distance_and_street_names_on">Показывает стрелки навигации, расстояние и названия улиц с телефона на поддерживаемых дисплеях BYD. Совместимость зависит от автомобиля.</string>
     <string name="show_the_side_map_only_when_its_card_is_open_and_switch_to">Показывать боковую карту только когда её карточка открыта, а для полной карты переключаться в теме карты. Изменения темы и карточек сохраняют подключение CarPlay.</string>
     <string name="shows_the_iphone_s_cluster_map_on_the_instrument_cluster_c">Показывает карту iPhone на приборной панели. В меню приборной панели, управляемом с руля, выберите навигацию на малом или полном экране.</string>
     <string name="start_carplay_automatically_after_device_boot">Запускать CarPlay автоматически после загрузки устройства</string>
@@ -358,7 +356,6 @@
     <string name="starting_airplay_service">Запуск службы AirPlay</string>
     <string name="starting_wireless_hotspot">Запуск беспроводной точки доступа</string>
     <string name="still_waiting_for_usage_access_check_that_the_command_ran">Всё ещё ожидаем доступ к использованию. Проверьте, что команда успешно выполнена для этого автомобиля, и повторите попытку.</string>
-    <string name="tap_a_number_to_test_14_driver_speaker_on_byd">Нажмите число для теста. 14 = динамик водителя в BYD.</string>
     <string name="the_head_unit_couldn_t_start_carplay_wi_fi_check_wi_fi_and">Головному устройству не удалось запустить Wi-Fi CarPlay. Проверьте Wi-Fi и закройте другие приложения проекции. Повтор…</string>
     <string name="this_ends_the_existing_wi_fi_direct_connection_including_o">Это завершит существующее подключение Wi-Fi Direct, в том числе оставшееся после переустановки. Сначала закройте другие приложения проекции. Интернет-Wi-Fi автомобиля останется включённым.</string>
     <string name="this_head_unit_cannot_use_the_smaller_size_at_this_resolut">Это головное устройство не может использовать меньший размер при этом разрешении. Используется значение по умолчанию.</string>
@@ -473,17 +470,13 @@
     <string name="adb_vehicle_gear_unreadable">На этой прошивке не удалось прочитать передачу.</string>
     <string name="advanced_vehicle_data">Расширенные данные автомобиля</string>
     <string name="hide_advanced_vehicle_data">Скрыть расширенные данные</string>
-    <string name="advanced_vehicle_data_description">Используйте стандартное чтение DiLink 5.0 или определите поля старой системы. Запись в автомобиль не выполняется.</string>
     <string name="vehicle_data_mode">Режим данных автомобиля</string>
-    <string name="vehicle_data_mode_default">Режим по умолчанию · проверен на DiLink 5.0</string>
-    <string name="vehicle_data_mode_legacy">Определение старой системы · проверено на контроллере 13 / DiLink 3.0</string>
     <string name="adb_not_checked">ADB ещё не проверен.</string>
     <string name="vehicle_probe_saved_automatic">Возможности автомобиля сохранены. Проверка через ADB и при необходимости повторное определение выполняются автоматически.</string>
     <string name="request_adb_authorization">Запросить разрешение ADB для DiPlay</string>
     <string name="adb_enabled_not_approved">ADB включён, но эта тестовая версия DiPlay ещё не авторизована.</string>
     <string name="probe_adb_and_vehicle_data">Определить старую систему</string>
     <string name="probe_vehicle_data_again">Повторно определить старую систему</string>
-    <string name="probing_vehicle_data">Читается каталог полей BYD этой прошивки и проверяются нужные поля…</string>
     <string name="vehicle_probe_failed">Ошибка проверки данных автомобиля: %1$s</string>
     <string name="vehicle_probe_lost_saved_fields">Проверка не подтвердила сохранённые поля: %1$s. Предыдущая конфигурация сохранена.</string>
     <string name="replace_saved_vehicle_data_anyway">Всё равно заменить сохранённые данные автомобиля</string>
@@ -506,7 +499,6 @@
     <string name="video_while_parked">Видео на стоянке</string>
     <string name="video_while_parked_description">iOS 27: видео, которое вы отправляете в CarPlay с iPhone, показывается на экране машины, пока включён P. Плеер закрывается, когда вы выходите из P; без ADB видео выключено и iPhone играет только звук. Обычное видео по HTTPS (например, из Safari) работает; видео под защитой FairPlay, как Apple TV+, требует лицензированного приёмника и здесь не воспроизводится. Переподключает CarPlay. Нужен ADB по сети на головном устройстве.</string>
     <string name="cluster_song">Песня на приборной панели</string>
-    <string name="cluster_song_description">Название и исполнитель песни из CarPlay показываются в музыкальной карточке на приборной панели, вместе с воспроизведением и паузой. Карточка отображается как источник BYD «другое», потому что панель не рисует собственный источник CarPlay. Применяется сразу. Нужен ADB по сети на головном устройстве.</string>
     <string name="video_back_to_carplay">Назад в CarPlay</string>
     <string name="video_play">Воспроизвести</string>
     <string name="video_pause">Пауза</string>

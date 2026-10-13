@@ -22,6 +22,12 @@
     <string name="settings_advanced_media">Vídeo y audio</string>
     <string name="settings_wheel_keys">Botones del volante</string>
     <string name="settings_experimental_display">Pantalla (experimental)</string>
+    <string name="settings_cluster_mirror">Espejo del clúster</string>
+    <string name="settings_cluster_mirror_enable">Duplicar CarPlay al clúster</string>
+    <string name="settings_cluster_mirror_enable_description">Mostrar la imagen de CarPlay en una segunda pantalla, como el clúster de instrumentos. Surte efecto en la próxima conexión.</string>
+    <string name="settings_cluster_mirror_display">Pantalla del clúster</string>
+    <string name="settings_cluster_mirror_no_display">No se encontró pantalla secundaria. Conecte la pantalla del clúster o verifique que esté expuesta como pantalla de Android.</string>
+    <string name="settings_cluster_mirror_none">Ninguno</string>
     <string name="settings_diagnostics_summary">Guarda un informe local al resolver problemas de conexión</string>
     <string name="settings_full_screen_description">Oculta las barras de estado y navegación en DiPlay y CarPlay.</string>
     <string name="settings_vehicle_description">Las funciones del vehículo y del cuadro de instrumentos varían según el modelo y el firmware. Revísalas en Ajustes avanzados antes de activar controles experimentales.</string>

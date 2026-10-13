@@ -21,7 +21,7 @@ import androidx.core.graphics.drawable.toBitmap
 import com.shilapi.xcertplay.airplay.CarPlayMediaButton
 import com.shilapi.xcertplay.compat.AudioFocusRequestCompat
 import com.shilapi.xcertplay.host.R
-import com.shilapi.xcertplay.hud.BydOutputSettings
+// carlito | BydOutputSettings removed.
 import com.shilapi.xcertplay.media.CarPlayNowPlaying
 import com.shilapi.xcertplay.orchestration.CarPlayController
 import com.shilapi.xcertplay.vehicle.GeelyFactoryCarPlay
@@ -631,7 +631,7 @@ internal object CarPlayMediaKeys {
     private val callback = CarPlayMediaCallback(
         send = ::send,
         consumesKey = ::consumesHardwareKey,
-        experimentalDiLink3Keys = { appContext?.let(BydOutputSettings::carPlayCallControls) == true },
+        experimentalDiLink3Keys = { false }, // carlito | BydOutputSettings.carPlayCallControls removed.
     )
 
     /** Whether [next] changes what the media session's metadata shows; position and play state do not. */

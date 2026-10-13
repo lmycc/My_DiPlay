@@ -14,9 +14,7 @@ import android.widget.TextView
 import com.shilapi.xcertplay.host.R
 import com.shilapi.xcertplay.airplay.AirPlaySession
 import com.shilapi.xcertplay.airplay.CarPlayMediaButton
-import com.shilapi.xcertplay.hud.BydCarPlayCall
-import com.shilapi.xcertplay.hud.CarPlayCallState
-import com.shilapi.xcertplay.iap2.message.Iap2Messages
+// carlito | BydCarPlayCall, CarPlayCallState and Iap2Messages removed.
 import com.shilapi.xcertplay.orchestration.CarPlayController
 import java.util.concurrent.ExecutorService
 import org.junit.After
@@ -41,7 +39,7 @@ class WheelSiriWindowTest {
     private lateinit var controller: CarPlayController
 
     @Before fun setUp() {
-        BydCarPlayCall.end()
+        // carlito | BydCarPlayCall.end removed.
         CarPlayBackgroundSession.clear()
         host = Robolectric.buildActivity(CarPlayHostActivity::class.java).get()
         settings = Robolectric.buildActivity(DiPlayActivity::class.java).get()
@@ -64,7 +62,7 @@ class WheelSiriWindowTest {
         for ((activity, name) in listOf(host to "mainHandler", settings to "handler")) {
             (activity.javaClass.getDeclaredField(name).apply { isAccessible = true }.get(activity) as Handler).removeCallbacksAndMessages(null)
         }
-        BydCarPlayCall.end()
+        // carlito | BydCarPlayCall.end removed.
         CarPlayBackgroundSession.clear()
         host.getSharedPreferences("xcertplay_airplay", Context.MODE_PRIVATE).edit().clear().commit()
         host.getSharedPreferences("vehicle_map_projection", Context.MODE_PRIVATE).edit().clear().commit()
@@ -109,17 +107,7 @@ class WheelSiriWindowTest {
         verify(controller, times(1)).requestSiri()
     }
 
-    @Test fun carPlayCallStateBlocksAssignedSiriWhileAndroidModeIsNormal() {
-        BydCarPlayCall.onFrame(Iap2Messages.buildRaw(CarPlayCallState.CALL_STATE_UPDATE) {
-            u8(2, 4); string(4, "active-call")
-        })
-        assertEquals(AudioManager.MODE_NORMAL, host.getSystemService(AudioManager::class.java).mode)
-        assertTrue(inCall(host))
-        host.dispatchKeyEvent(key(KeyEvent.KEYCODE_F6, true))
-        BydCarPlayCall.end()
-        host.dispatchKeyEvent(key(KeyEvent.KEYCODE_F6, false))
-        verify(controller, never()).requestSiri()
-    }
+    // carlito | carPlayCallStateBlocksAssignedSiriWhileAndroidModeIsNormal removed (BydCarPlayCall).
 
     @Test fun windowLearningConsumesRepeatsAndReleaseAfterAssignmentFinishes() {
         var learned = 0
@@ -225,35 +213,7 @@ class WheelSiriWindowTest {
         assertSharedServiceSetupOnce(wheelControls())
     }
 
-    @Test fun nonBydUnitWithThePreviouslySupportedClusterDisplayKeepsWheelControls() {
-        settings.setTheme(android.R.style.Theme_Material_NoActionBar)
-        WheelZoomSettings.setSiriKey(settings, false)
-        AirPlayPersistence.saveClusterMapEnabled(settings, true)
-        val displayId = ShadowDisplayManager.addDisplay("w1920dp-h720dp-mdpi", 5)
-        shadowOf(settings.getSystemService(DisplayManager::class.java).getDisplay(displayId)).apply {
-            setName(DiLink4ClusterDisplay.NAME)
-            setFlags(Display.FLAG_PRESENTATION)
-        }
-        try {
-            assertFalse(CarHotspotSetup.isBydHeadUnit(settings))
-            assertEquals(displayId, ClusterMapPresentation.findDisplay(settings)?.displayId)
-            val controls = wheelControls()
-            val zoom = views(controls).filterIsInstance<Switch>().single {
-                it.contentDescription == settings.getString(R.string.wheel_map_zoom)
-            }
-            assertFalse(zoom.isChecked)
-            assertTrue(views(controls).filterIsInstance<Switch>().any {
-                it.contentDescription == settings.getString(R.string.wheel_joystick)
-            })
-
-            zoom.performClick()
-
-            assertTrue(WheelZoomSettings.enabled(settings))
-            assertSharedServiceSetupOnce(wheelControls())
-        } finally {
-            ShadowDisplayManager.removeDisplay(displayId)
-        }
-    }
+    // carlito | nonBydUnitWithThePreviouslySupportedClusterDisplayKeepsWheelControls removed (DiLink4ClusterDisplay, ClusterMapPresentation).
 
     private fun wheelControls() = LinearLayout(settings).also { controls ->
         settings.javaClass.getDeclaredMethod("wheelKeysSettings", LinearLayout::class.java)

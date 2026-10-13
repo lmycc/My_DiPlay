@@ -3,7 +3,7 @@ package com.shilapi.xcertplay
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import com.shilapi.xcertplay.adb.LocalAdb
-import com.shilapi.xcertplay.hud.BydOutputSettings
+// carlito | BydOutputSettings removed.
 import com.shilapi.xcertplay.network.CarHotspotSettings
 import com.shilapi.xcertplay.orchestration.WirelessHotspotMode
 import org.junit.Assert.*
@@ -36,7 +36,7 @@ class CarHotspotSetupTest {
         ShadowBuild.setManufacturer("QUALCOMM")
         ShadowBuild.setBrand("qti")
         installPackage("com.byd.carsettings", system = true)
-        assertFalse(BydOutputSettings.navigationAvailable(context))
+        // carlito | BydOutputSettings.navigationAvailable removed.
         assertTrue(CarHotspotSetup.isBydHeadUnit(context))
         assertTrue(CarHotspotSettings.visible(CarHotspotSetup.isBydHeadUnit(context), LocalAdb.Access.NOT_APPROVED))
         assertFalse(CarHotspotSettings.visible(CarHotspotSetup.isBydHeadUnit(context), LocalAdb.Access.UNREACHABLE))
@@ -52,11 +52,7 @@ class CarHotspotSetupTest {
         assertFalse(CarHotspotSettings.visible(CarHotspotSetup.isBydHeadUnit(context), LocalAdb.Access.READY))
     }
 
-    @Test fun existingNavigationBasedDetectionIsPreserved() {
-        installPackage("com.byd.amapservice", system = true)
-        assertTrue(BydOutputSettings.navigationAvailable(context))
-        assertTrue(CarHotspotSetup.isBydHeadUnit(context))
-    }
+    // carlito | existingNavigationBasedDetectionIsPreserved removed (tested BydOutputSettings.navigationAvailable).
 
     @Test fun onlyBydWithSupportedAdbSeesTheSettingIncludingBeforeApproval() {
         for (access in LocalAdb.Access.entries) {

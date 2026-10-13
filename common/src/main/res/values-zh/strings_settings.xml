@@ -5,6 +5,12 @@
     <string name="settings_advanced_caution_description">这些功能可能取决于车辆固件、ADB 权限或 CarPlay 的实验性行为。日常设置位于上方各类别中。</string>
     <string name="settings_advanced_caution_title">请谨慎更改</string>
     <string name="settings_advanced_media">视频与音频</string>
+    <string name="settings_cluster_mirror">仪表盘镜像</string>
+    <string name="settings_cluster_mirror_enable">将 CarPlay 镜像到仪表盘</string>
+    <string name="settings_cluster_mirror_enable_description">将 CarPlay 画面显示在仪表盘等副屏上。下次连接时生效。</string>
+    <string name="settings_cluster_mirror_display">仪表盘显示屏</string>
+    <string name="settings_cluster_mirror_no_display">未找到副屏。请连接仪表盘显示屏，或确认其已作为安卓显示屏暴露。</string>
+    <string name="settings_cluster_mirror_none">无</string>
     <string name="settings_advanced_subtitle">面向有经验用户的实验性及车型专用设置</string>
     <string name="settings_android9_compat">以下设置在 Android 9（API 28）上不可用且已隐藏：\n• Wi-Fi P2P（5 GHz）— 将改用 LocalOnlyHotspot。\n• HEVC 软解码器 — 将改用硬件解码。</string>
     <string name="settings_app_appearance">应用外观</string>
@@ -13,7 +19,6 @@
     <string name="settings_app_appearance_description">自动模式跟随已保存的 CarPlay 日夜设置；CarPlay 打开时则跟随实时结果。浅色和深色模式保持固定，无需重新连接。</string>
     <string name="settings_app_appearance_light">浅色</string>
     <string name="settings_audio_summary">声音输出与音乐缓冲</string>
-    <string name="settings_byd_navigation_unavailable">此车机不支持比亚迪仪表盘和 HUD 导航提示。</string>
     <string name="settings_car_bluetooth_audio">通过车辆蓝牙播放 CarPlay 音频（实验性）</string>
     <string name="settings_car_bluetooth_audio_description">DiPlay 不向 iPhone 提供 CarPlay 音频，因此音乐、导航和通话应通过 iPhone 与车辆的蓝牙连接传输。请保持 iPhone 与车辆配对，并将车辆音源设为蓝牙。如果声音改从 iPhone 播放，请关闭此选项。会重新连接 CarPlay。</string>
     <string name="settings_choose_iphone_action">选择 iPhone</string>
@@ -29,7 +34,7 @@
     <string name="settings_force_full_settings_hint">仅在横向使用含分类侧栏的完整设置页面布局；纵向恢复自动适配。小窗口可能需要滚动。不影响主屏幕或 CarPlay。</string>
     <string name="settings_full_screen_description">在 DiPlay 与 CarPlay 中隐藏状态栏及导航栏。</string>
     <string name="settings_gesture_fingers">打开设置 · %1$d 指下滑（点按切换）</string>
-    <string name="settings_gesture_fingers_hint">选择车机没有占用的手指数。比亚迪的三指下滑是空调面板，建议改用 2 指。</string>
+    <string name="settings_gesture_fingers_hint">选择车机没有占用的手指数。部分车机的三指下滑是空调面板，建议改用 2 指。</string>
     <string name="settings_gesture_fingers_label">打开设置 · 下滑手指数</string>
     <string name="settings_gesture_fingers_option">%1$d 指</string>
     <string name="settings_interface_size">界面大小</string>

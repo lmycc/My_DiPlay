@@ -70,7 +70,7 @@ class SmoothVideoHostLifecycleTest {
         (getField("shuttingDown") as AtomicBoolean).set(true)
         (getField("mainHandler") as Handler).removeCallbacksAndMessages(null)
         AirPlayPersistence.overlaySettingsListener = null
-        com.shilapi.xcertplay.hud.BydNavigationOutputs.setTurnOverlayListener(null)
+        // carlito | BydNavigationOutputs.setTurnOverlayListener removed.
         (getField("controller") as? CarPlayController)?.let { CarPlayMediaKeys.detach(it) }
         blockedCodecs.forEach { it.release() }
         (getField("sink") as? AndroidMediaSink)?.close()

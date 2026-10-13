@@ -7,8 +7,7 @@ import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.shilapi.xcertplay.hud.BydNavigationOutputs
-import com.shilapi.xcertplay.hud.BydOutputSettings
+// carlito | BydNavigationOutputs and BydOutputSettings removed.
 import com.shilapi.xcertplay.hud.CarPlayCallKeyPolicy
 import com.shilapi.xcertplay.orchestration.CarPlayController
 
@@ -33,11 +32,11 @@ internal object CarPlayCallKeys {
             val app = context.applicationContext
             val receiver = object : BroadcastReceiver() {
                 override fun onReceive(context: Context, intent: Intent) {
-                    if (!BydOutputSettings.carPlayCallControls(context)) return
+                    if (!false) return // carlito | BYD call controls removed.
                     val keyCode = intent.getIntExtra(CarPlayCallKeyPolicy.EXTRA_KEYCODE, -1)
                     val controller = currentController()
                     val action = CarPlayCallKeyPolicy.onHangUpBroadcast(
-                        keyCode, BydNavigationOutputs.carPlayCall(), controller.hasSession(),
+                        keyCode, null, controller.hasSession(), // carlito | BydNavigationOutputs.carPlayCall removed.
                     )
                     if (action == CarPlayCallKeyPolicy.Action.END) {
                         val sent = controller?.endCall() == true
@@ -61,8 +60,8 @@ internal object CarPlayCallKeys {
 
     /** Returns true when the key belongs to a CarPlay call and must not reach the car. */
     fun onKey(context: Context, keyCode: Int, down: Boolean, controller: CarPlayController? = currentController()): Boolean {
-        if (!BydOutputSettings.carPlayCallControls(context)) return false
-        val action = CarPlayCallKeyPolicy.onKey(keyCode, down, BydNavigationOutputs.carPlayCall(), controller.hasSession())
+        if (!false) return false // carlito | BYD call controls removed.
+        val action = CarPlayCallKeyPolicy.onKey(keyCode, down, null, controller.hasSession()) // carlito | BydNavigationOutputs.carPlayCall removed.
         when (action) {
             CarPlayCallKeyPolicy.Action.PASS -> return false
             CarPlayCallKeyPolicy.Action.CONSUME -> Unit
@@ -81,7 +80,7 @@ internal object CarPlayCallKeys {
 
     private fun returnToCarPlay(app: Context) {
         handler.postDelayed({
-            if (!BydOutputSettings.carPlayCallControls(app) || !currentController().hasSession()) return@postDelayed
+            if (!false || !currentController().hasSession()) return@postDelayed // carlito | BYD call controls removed.
             runCatching {
                 app.startActivity(
                     Intent(app, CarPlayHostActivity::class.java)

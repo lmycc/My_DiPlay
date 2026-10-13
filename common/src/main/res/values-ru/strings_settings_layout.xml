@@ -22,6 +22,12 @@
     <string name="settings_advanced_media">Видео и звук</string>
     <string name="settings_wheel_keys">Кнопки на руле</string>
     <string name="settings_experimental_display">Экран (экспериментально)</string>
+    <string name="settings_cluster_mirror">Зеркало приборной панели</string>
+    <string name="settings_cluster_mirror_enable">Дублировать CarPlay на приборную панель</string>
+    <string name="settings_cluster_mirror_enable_description">Показывать изображение CarPlay на втором дисплее, например приборной панели. Действует при следующем подключении.</string>
+    <string name="settings_cluster_mirror_display">Дисплей приборной панели</string>
+    <string name="settings_cluster_mirror_no_display">Дополнительный дисплей не найден. Подключите дисплей приборной панели или проверьте, что он доступен как дисплей Android.</string>
+    <string name="settings_cluster_mirror_none">Нет</string>
     <string name="settings_diagnostics_summary">Сохраните локальный отчёт при устранении проблем с подключением</string>
     <string name="settings_full_screen_description">Скрывать строки состояния и навигации в DiPlay и CarPlay.</string>
     <string name="settings_vehicle_description">Функции автомобиля и приборной панели зависят от модели и прошивки. Проверьте их в разделе «Дополнительно», прежде чем включать экспериментальные параметры.</string>

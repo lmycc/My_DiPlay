@@ -11,7 +11,7 @@ object SetupGuide {
     const val STEP_DONE = 4
     const val STEP_COUNT = 5
 
-    enum class Feature { AUTO_CONNECT, LOCATION, CLUSTER_MAP, BYD_NAVIGATION, CALLS_ON_DASHBOARD, CALL_KEYS, DILINK4_ADB_CLUSTER }
+    enum class Feature { AUTO_CONNECT, LOCATION, CLUSTER_MAP, CALLS_ON_DASHBOARD, CALL_KEYS, DILINK4_ADB_CLUSTER }
 
     /** TESTED: confirmed on at least one car of this generation. HIDDEN: not offered in the guide. */
     enum class Status { TESTED, EXPERIMENTAL, HIDDEN }
@@ -29,7 +29,7 @@ object SetupGuide {
             entry(Feature.CLUSTER_MAP, if (dilink3) Status.TESTED else Status.EXPERIMENTAL),
             // DiLink 4 needs its own ADB cluster route; on DiLink 3 that route blocks the dashboard map.
             entry(Feature.DILINK4_ADB_CLUSTER, if (dilink4) Status.EXPERIMENTAL else Status.HIDDEN, needsAdb = true),
-            entry(Feature.BYD_NAVIGATION, if (dilink3 || generation == DiLinkGeneration.DILINK_5) Status.TESTED else Status.EXPERIMENTAL),
+            // carlito | BYD_NAVIGATION feature removed.
             entry(Feature.CALLS_ON_DASHBOARD, if (dilink3) Status.EXPERIMENTAL else Status.HIDDEN, needsAdb = true),
             entry(Feature.CALL_KEYS, if (dilink3) Status.EXPERIMENTAL else Status.HIDDEN, needsAdb = true),
         ).filter { it.status != Status.HIDDEN }

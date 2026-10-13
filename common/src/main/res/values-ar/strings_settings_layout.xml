@@ -22,6 +22,12 @@
     <string name="settings_advanced_media">الفيديو والصوت</string>
     <string name="settings_wheel_keys">أزرار عجلة القيادة</string>
     <string name="settings_experimental_display">الشاشة (تجريبي)</string>
+    <string name="settings_cluster_mirror">مرآة العدادات</string>
+    <string name="settings_cluster_mirror_enable">عرض CarPlay على العدادات</string>
+    <string name="settings_cluster_mirror_enable_description">عرض صورة CarPlay على شاشة ثانية مثل عدادات المركبة. يسري عند الاتصال التالي.</string>
+    <string name="settings_cluster_mirror_display">شاشة العدادات</string>
+    <string name="settings_cluster_mirror_no_display">لم يتم العثور على شاشة ثانوية. اتصل بشاشة العدادات أو تحقق من ظهورها كشاشة أندرويد.</string>
+    <string name="settings_cluster_mirror_none">لا شيء</string>
     <string name="settings_diagnostics_summary">احفظ تقريرًا محليًا عند استكشاف مشكلة في الاتصال</string>
     <string name="settings_full_screen_description">إخفاء شريطي الحالة والتنقل في DiPlay وCarPlay.</string>
     <string name="settings_vehicle_description">تختلف ميزات السيارة ولوحة العدادات حسب الطراز والبرنامج الثابت. راجعها في الإعدادات المتقدمة قبل تفعيل عناصر التحكم التجريبية.</string>

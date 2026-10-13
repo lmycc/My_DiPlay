@@ -102,7 +102,7 @@ class StandaloneHudDemoActivity : Activity() {
         try {
             validateTarget()
 
-            BydNavigationOutputs.setDiagnosticHold(true)
+            // carlito | BydNavigationOutputs.setDiagnosticHold removed.
             showing = true // Preserve cleanup even if a later operation fails.
             transmit(StandaloneHudPackets.start())
             started = SystemClock.elapsedRealtime()
@@ -141,7 +141,7 @@ class StandaloneHudDemoActivity : Activity() {
 
     }
 
-    override fun onStop() { clear("activity stopped"); BydNavigationOutputs.setDiagnosticHold(false); super.onStop() }
+    override fun onStop() { clear("activity stopped"); super.onStop() } // carlito | BydNavigationOutputs.setDiagnosticHold removed.
     override fun onDestroy() { clear("activity destroyed"); super.onDestroy() }
     companion object { private const val TAG = "BYD-Standalone" }
 }
